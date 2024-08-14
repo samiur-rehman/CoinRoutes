@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Dropdown from './components/Dropdown';
+import TopOfBook from './components/TopOfBook';
+import OrderBook from './components/OrderBook';
+import RealTimePriceChart from './components/RealTimePriceChart';
 
-function App() {
+const App = () => {
+  const cryptoPairs = ["BTC-USD", "ETH-USD", "LTC-USD", "XRP-USD"];
+  const [selectedPair, setSelectedPair] = useState("BTC-USD");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="p-8 bg-gray-100 h-screen w-screen overflow-x-hidden">
+      <Dropdown
+        options={cryptoPairs}
+        onChange={(pair) => setSelectedPair(pair)}
+        value={selectedPair}
+      />
+      <TopOfBook pair={selectedPair} />
+      <RealTimePriceChart pair={selectedPair} />
+      <OrderBook pair={selectedPair} />
     </div>
   );
-}
+};
 
 export default App;
