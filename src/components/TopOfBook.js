@@ -5,7 +5,7 @@ const TopOfBook = ({ pair }) => {
     const [topOfBook, setTopOfBook] = useState({ bid: null, ask: null, volume: null });
 
     useEffect(() => {
-        const unsubscribe = connectToCoinbase(pair, ({ bid, ask, volume_24h }) => {
+        const unsubscribe = connectToCoinbase(pair, 'ticker', ({ bid, ask, volume_24h }) => {
             setTopOfBook({ bid, ask, volume_24h });
         });
 

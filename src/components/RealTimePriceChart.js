@@ -19,12 +19,12 @@ const RealTimePriceChart = ({ pair }) => {
             unsubscribeRef.current();
         }
 
-        unsubscribeRef.current = connectToCoinbase(pair, ({ bid, ask, time }) => {
+        unsubscribeRef.current = connectToCoinbase(pair, 'ticker', ({ bid, ask, time }) => {
 
             setBidData((prevBidData) => {
                 const lastTime = prevBidData.length > 0 ? prevBidData[prevBidData.length - 1].time : 0;
                 if (time > lastTime) {
-                    return [...prevBidData, { time, value: parseFloat(bid) }];
+                    return [...prevBidData, { time, value: parseFloat(bid), color: 'rgba(34, 197, 94, 1)' }];
                 }
                 return prevBidData;
             });
@@ -32,7 +32,7 @@ const RealTimePriceChart = ({ pair }) => {
             setAskData((prevAskData) => {
                 const lastTime = prevAskData.length > 0 ? prevAskData[prevAskData.length - 1].time : 0;
                 if (time > lastTime) {
-                    return [...prevAskData, { time, value: parseFloat(ask) }];
+                    return [...prevAskData, { time, value: parseFloat(ask), color: 'rgba(239, 68, 68, 1)' }];
                 }
                 return prevAskData;
             });

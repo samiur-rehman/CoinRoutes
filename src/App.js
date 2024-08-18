@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Dropdown from './components/Dropdown';
 import TopOfBook from './components/TopOfBook';
-import OrderBook from './components/OrderBook';
+import { OrderBook } from './components/OrderBook';
 import RealTimePriceChart from './components/RealTimePriceChart';
 
 const App = () => {

@@ -37,19 +37,15 @@ const PriceComparisonChart = ({ bidData, askData }) => {
                 },
             });
 
-            // Create bid and ask line series
             bidSeriesRef.current = chartRef.current.addLineSeries({
-                color: 'green',
                 lineWidth: 2,
             });
 
             askSeriesRef.current = chartRef.current.addLineSeries({
-                color: 'red',
                 lineWidth: 2,
             });
         }
 
-        // Resize observer to make the chart responsive
         const resizeObserver = new ResizeObserver(() => {
             if (chartContainerRef.current) {
                 chartRef.current.applyOptions({ width: chartContainerRef.current.clientWidth });
@@ -77,10 +73,11 @@ const PriceComparisonChart = ({ bidData, askData }) => {
     }, [askData]);
 
     return (
-        <div
-            ref={chartContainerRef}
-            className="mt-4 bg-white shadow rounded-lg relative"
-        />
+        <div className='mt-4 p-4 border border-gray-300 bg-white shadow rounded-lg'>
+            <div
+                ref={chartContainerRef}
+            />
+        </div>
     );
 };
 
