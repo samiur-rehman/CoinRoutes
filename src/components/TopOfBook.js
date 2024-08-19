@@ -25,7 +25,11 @@ const TopOfBook = ({ pair }) => {
             <p className="text-green-500">Bid: {topOfBook.bid || 'Loading...'}</p>
             <p className="text-red-500">Ask: {topOfBook.ask || 'Loading...'}</p>
             <p className="text-blue-500">Spread: {spread || 'Loading...'}</p>
-            <p className="text-gray-600">24h Volume: {Number(topOfBook.volume_24h).toFixed(3) || 'Loading...'}</p>
+            <p className="text-gray-600">
+                24h Volume: {Number.isFinite(topOfBook?.volume_24h) ? topOfBook.volume_24h.toFixed(3) : 'Loading...'}
+            </p>
+
+
         </div>
     );
 };

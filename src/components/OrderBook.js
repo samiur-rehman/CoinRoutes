@@ -62,28 +62,32 @@ export const OrderBook = ({ pair }) => {
             <div className="flex flex-grow overflow-hidden gap-4">
                 <div className="w-1/2  p-4 border border-gray-700 rounded-lg shadow-md overflow-hidden">
                     <div className="flex justify-between border-b border-gray-700 pb-1 mb-2">
-                        <h4 className="text-green-500 font-semibold mb-2">Bids</h4>
-                        <h4 className="text-gray-400 font-semibold mb-2">Size</h4>
+                        <h4 className="text-green-500 font-semibold mb-2">Price (USD) </h4>
+                        <h4 className="text-gray-400 font-semibold mb-2">Market Size</h4>
+                        <h4 className="text-gray-400 font-semibold mb-2">Total</h4>
                     </div>
                     <div className="space-y-1">
                         {orderBookData.bids.map(([price, quantity]) => (
                             <div key={price} className="flex justify-between py-1 border-b border-gray-300">
                                 <span className="text-green-500">{Number(price).toFixed(3)}</span>
                                 <span className='text-gray-400 '>{quantity}</span>
+                                <span className='text-gray-400 '>{(price * quantity).toFixed(2)}</span>
                             </div>
                         ))}
                     </div>
                 </div>
                 <div className="w-1/2 p-4 border border-gray-700 rounded-lg shadow-md overflow-hidden">
                     <div className="flex justify-between border-b border-gray-700 pb-1 mb-2">
-                        <h4 className="text-red-500 font-semibold mb-2">Asks</h4>
-                        <h4 className="text-gray-400  font-semibold mb-2">Size</h4>
+                        <h4 className="text-red-500 font-semibold mb-2">Price (USD)</h4>
+                        <h4 className="text-gray-400  font-semibold mb-2">Market Size</h4>
+                        <h4 className="text-gray-400 font-semibold mb-2">Total</h4>
                     </div>
                     <div className="space-y-1">
                         {orderBookData.asks.map(([price, quantity]) => (
                             <div key={price} className="flex justify-between py-1 border-b border-gray-300">
                                 <span className="text-red-500">{Number(price).toFixed(3)}</span>
                                 <span className='text-gray-400 '>{quantity}</span>
+                                <span className='text-gray-400 '>{(price * quantity).toFixed(2)}</span>
                             </div>
                         ))}
                     </div>
