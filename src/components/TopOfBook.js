@@ -26,7 +26,7 @@ const TopOfBook = ({ pair }) => {
             <p className="text-red-500">Ask: {topOfBook.ask || 'Loading...'}</p>
             <p className="text-blue-500">Spread: {spread || 'Loading...'}</p>
             <p className="text-gray-600">
-                24h Volume: {Number.isFinite(topOfBook?.volume_24h) ? topOfBook.volume_24h.toFixed(3) : 'Loading...'}
+                24h Volume: {topOfBook?.volume_24h && !isNaN(topOfBook.volume_24h) ? Number(topOfBook.volume_24h).toFixed(3) : 'Loading...'}
             </p>
 
 
